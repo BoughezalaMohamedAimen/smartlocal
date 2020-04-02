@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} chambre {{chambre}} {% endblock title %}
+
+{% block body %}
+
+<div class="container my-4">
+  <div class="row">
+    {% for item in chambre.commande_set.all %}
+      <div class="col-3 text-center py-2">
+        <div class="container border-bottom item py-3 shadow" style="background: rgba(240, 105, 86, .05);">
+          <div class="icon-container text-night mb-2">
+            {% if item.type == 'Lampe' %}
+              <i class="fas fa-lightbulb center"></i>
+            {% elif item.type == 'Prise' %}
+              <i class="fas fa-charging-station center"></i>
+            {% elif item.type == 'Rideau' %}
+              <i class="fas fa-warehouse center"></i>
+            {% endif %}
+
+          </div>
+          <h6 class="text-center text-secondary text-uppercase"> {{item.nom}} </h6>
+          <h6 class="text-center"> <span class="badge bg-night text-white">ETAT</span></h6>
+          {% if item.type == 'Rideau' %}
+            <div class="row">
+              <div class="col-5 offset-1">
+                <span class="commande-rideau text-night" data-item="{{item.id}}" data-action="2">
+                  <i class="fa fa-arrow-down center"></i>
+                </span>
+              </div>
+              <div class="col-5 text-right">
+                <span class="commande-rideau text-night" data-item="{{item.id}}" data-action="1">
+                  <i class="fa fa-arrow-up center"></i>
+                </span>
+              </div>
+            </div>
+          {%else%}
+          <div class="text-center py-1">
+            <input type="checkbox" class="custom-checkbox change-etat" data-item="{{item.id}}" {% if item.etat%} checked {%endif%}>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+      {%endfor%}
+  </div>
+</div>
+
+
+ {% endblock body %}

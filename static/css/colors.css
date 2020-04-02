@@ -1,0 +1,43 @@
+.bg-day
+{
+  background: #5f84ce;
+}
+.text-day
+{
+  color: #5f84ce;
+}
+.bg-night
+{
+  background: #f06956;
+}
+.text-night
+{
+  color: #f06956;
+}
+.bg-gray
+{
+  background: #e8e8e8;
+}
+.text-gray
+{
+  color:#c5c5c5;
+}
+
+@font-face {
+  font-family: 'Benchnine';
+   src: url("BenchNine.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto';
+   src: url("Roboto.ttf");
+}
+
+body
+{
+    font-family: Roboto !important;
+}
+h1,h2,h3,h4,h5,h6
+{
+  font-family: Benchnine !important;
+}

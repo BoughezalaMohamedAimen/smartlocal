@@ -1,0 +1,123 @@
+@import "colors.css";
+@import "menu.css";
+@import "checkbox.css";
+a
+{
+  color:inherit;
+  text-decoration: none !important;
+}
+a:hover
+{
+  color:inherit;
+}
+/**************************************************************Loading****************************************/
+.loading
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 444;
+  background: #fff;
+}
+.spinner-container
+{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/******************************************************************************************************/
+.center
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.icon-container
+{
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  font-size: 26px;
+  margin:0 auto;
+  border: 1px solid #f06956
+}
+.icon-container:hover
+{
+  background: #f06956;
+  color:#fff;
+}
+.item
+{
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.custom-overlay
+{
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 1
+}
+.commande
+{
+  position: fixed;
+  top: 100%;
+  left: 0;
+  -webkit-transition: .7s all;
+  -o-transition: .7s all;
+  transition: .7s all;
+  z-index: 3;
+  width: 80%;
+  height: 80%;
+}
+.commande.visible
+{
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.commande-rideau
+{
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #f06956;
+  border-radius: 50%;
+  -webkit-transition: .5s all;
+  -o-transition: .5s all;
+  transition: .5s all;
+}
+.commande-rideau:hover
+{
+  background: #f06956;
+  color: #fff
+}
+.message
+{
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: rgba(46, 204, 64, .8);
+  padding: 7px 20px;
+  border-radius: 20px;
+  display: none;
+}

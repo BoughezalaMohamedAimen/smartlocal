@@ -1,0 +1,44 @@
+
+
+<div class="bg-night py-3 mb-2 text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        {% if request.path != '/' %}
+          <i class="fa fa-arrow-left" onclick="window.history.back();"></i>
+          {% endif %}
+      </div>
+      <div class="col-6 text-center">
+          Liste des chambres
+      </div>
+      <div class="col-3 text-right">
+          <a class="nav-link openmenu"><span><i class="fas fa-bars"></i></span></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="menu py-5 text-white pl-4 bg-night">
+  <div class="container mt-5 pt-4 font-weight-light">
+    <!-- <a class='menu-link my-3' href='#'><span class='link-child link-child-hidden'><i class="fas fa-wifi"></i> Wifi</span></a> -->
+    <a class='menu-link my-3' href="{% url 'admin:index' %}"><span class='link-child link-child-hidden'><i class="fas fa-wrench"></i> Parametre</span></a>
+    <a class='menu-link my-3' href='{% url "InternetSync" %}'><span class='link-child link-child-hidden'><i class="fas fa-sync"></i> Synchroniser</span></a>
+    <a class='menu-link my-3' href='#'><span class='link-child link-child-hidden'><i class="fas fa-envelope-open-text"></i> Contact</span></a>
+    <div>
+      <br>
+      <a href="#" class='fb link-child link-child-hidden social' ><span class='center'><i class="fab fa-facebook-f"></i></span></a>
+      <a href="#" class='twt link-child link-child-hidden social' ><span class='center'><i class="fab fa-twitter"></i></span></a>
+      <a href="#" class='in link-child link-child-hidden social' ><span class='center'><i class="fab fa-linkedin-in"></i></span></a>
+      <a href="#" class='insta link-child link-child-hidden social' ><span class='center'><i class="fab fa-instagram"></i></span></a>
+    </div>
+  </div>
+</div>
+
+<div class="loading" id='load'>
+  <div class="spinner-container text-center">
+    <div class="spinner-grow text-night" role="status">
+      <span class="sr-only">Chargement...</span>
+    </div>
+  </div>
+</div>
