@@ -19,12 +19,19 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.authtoken import views
 from .static_views import Home
-
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Home,name="Home"),
+    path('',TemplateView.as_view(template_name="index.html"),name="home"),
     re_path(r'^chambres/',include('chambres.urls')),
     path('api-auth/', views.obtain_auth_token,name="obtain_auth_token"),
 ]+  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+urlpatterns += [
+    # your integrate path
+    re_path(r'(?P<path>.*)', TemplateView.as_view(template_name="index.html"), name='home')
+]
+
 admin.site.site_header='Administration de la maison'

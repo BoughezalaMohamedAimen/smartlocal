@@ -15,7 +15,7 @@ class SingleChambre(TemplateView):
         try:
             if  self.verify_chalenge(request):
                 chambre=Chambre.objects.get(id=id)
-                return render(request,'chambres/single.html',{'chambre':chambre})
+                return render(request,'index.html',{'chambre':chambre})
             else:
                 return HttpResponse(status=403)
         except:
@@ -55,6 +55,9 @@ class ChangeEtat(TemplateView):
         except:
             return HttpResponse(status=500)
 
+    def post(self,request,device,commande):
+        pass
+
 
     def verify_chalenge(self,request):
         ip=request.META.get("REMOTE_ADDR")
@@ -92,7 +95,7 @@ class InternetSynch(LoginRequiredMixin,TemplateView):
         self.send_commandes()
 
         if len(self.errors)>0:
-            return render(request,'chambres/error.html',{'errors':errors})
+            return render(request,'chambres/error.html',{'errors':self.errors})
         else:
             return redirect('Home')
 
