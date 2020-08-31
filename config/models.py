@@ -16,3 +16,6 @@ class Identifiant(models.Model):
 
     def __str__(self):
         return self.identifiant
+
+class CleLocal(models.Model):
+    cle_local=models.CharField(max_length=255)

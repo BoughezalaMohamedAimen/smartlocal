@@ -1,6 +1,9 @@
 from django.db import models
+from config.models import CleLocal
 import string
 import secrets
+import hmac
+import hashlib
 
 # Create your models here.
 class Chambre(models.Model):
@@ -34,21 +37,6 @@ class Chalenge(models.Model):
     heure=models.DateTimeField(auto_now_add=True)
 
     def create(self):
-        self.chalenge = ''.join(secrets.choice(string.ascii_letters + string.digits) for i in range(80))
-        numbers=[int(s) for s in self.chalenge if s.isdigit()]
-        crypted=''
-        i=0
-        for s in self.chalenge:
-
-            crypted_char=chr(ord(s)+numbers[i])  if i % 2 ==0 else chr(ord(s)-numbers[i]*2)
-            if not crypted_char.isalnum():
-                crypted_char=str(ord(crypted_char))
-            if numbers[i] % 2 == 0:
-                crypted+=crypted_char
-            else:
-                crypted=crypted_char+crypted
-
-            i+=1
-            if(i==len(numbers)):
-                i=0
-        self.result=crypted
+        self.chalenge = ''.join(secrets.choice(string.ascii_letters + string.digits) for i in range(10))
+        cle=str.encode(CleLocal.objects.all().first().cle_local)
+        self.result=hmac.new(cle,str.encode(self.chalenge)).hexdigest()
